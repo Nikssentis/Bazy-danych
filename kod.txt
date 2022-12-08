@@ -1,0 +1,68 @@
+
+4.2
+SELECT kreatura.nazwa FROM kreatura
+NATURAL JOIN ekwipunek
+INNER JOIN zasob ON ekwipunek.idZasobu = zasob.idZasobu WHERE zasob.rodzaj ="jedzenie" ORDER BY kreatura.dataUr DESC LIMIT 5;
+
+4.3
+SELECT kreatura.nazwa FROM kreatura WHERE (idKreatury % 5) = 0;
+
+5.1
+SELECT AVG(zasob.waga), kreatura.nazwa from kreatura
+NATURAL JOIN ekwipunek
+INNER JOIN zasob ON ekwipunek.idZasobu = zasob.idZasobu
+WHERE NOT kreatura.rodzaj ='malpa' or 'waz';
+
+5.2
+SELECT kreatura.nazwa,kreatura.dataUr,kreatura.rodzaj from kreatura where dataUr = (select max(DataUr) from kreatura) 
+or dataUr = (select min(dataUr) from kreatura)
+
+lekcja 5
+
+1.1
+CREATE TABLE wikingowie
+AS
+SELECT 
+  kreatura. 
+FROM old_table_name;
+
+1.2
+
+SELECT kreatura.nazwa FROM kreatura INNER JOIN uczestnicy ON uczestnicy.id_wyprawy = uczestnicy.id_uczestnika WHERE uczestnicy.id_uczestnika NOT IN (SELECT uczestnicy.id_uczestnika FROM uczestnicy);
+
+
+
+SELECT kreatura.nazwa FROM kreatura,uczestnicy WHERE uczestnicy.id_uczestnika NOT IN (SELECT uczestnicy.id_wyprawy FROM uczestnicy);
+
+
+
+SELECT            kreatura.nazwa
+FROM              kreatura
+NATURAL LEFT JOIN tbl_2 b
+WHERE             b.FirstName IS NULL
+
+
+
+SELECT kreatura.nazwa
+FROM kreatura
+WHERE NOT EXISTS (
+  SELECT *
+  FROM uczestnicy 
+  WHERE kreatura.FirstName=uczestnicy
+
+.FirstName AND kreatura.LastName=uczestnicy.Last_Name
+
+
+
+
+
+
+SELECT kreatura.nazwa
+    FROM kreatura as A
+    LEFT JOIN uczestnicy as B
+    ON A.nazwa = B.id_uczestnika
+    Where B.id_uczestnika Is NULL;
+
+
+2.1
+select wyprawa.nazwa
