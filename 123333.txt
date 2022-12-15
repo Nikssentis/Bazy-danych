@@ -1,0 +1,28 @@
+SELECT kreatura.nazwa FROM kreatura,uczestnicy WHERE uczestnicy.id_uczestnika NOT IN (SELECT uczestnicy.id_wyprawy FROM uczestnicy);
+
+SELECT kreatura.nazwa FROM (SELECT uczestnicy.id_wyprawy FROM uczestnicy,) WHERE uczestnicy.id_uczestnika NOT IN (SELECT uczestnicy.id_wyprawy FROM uczestnicy);
+
+SELECT kreatura.nazwa
+  FROM kreatura,uczestnicy
+  WHERE uczestnicy.id_uczestnika = uczestnicy.id_wyprawy
+  WHERE uczestnicy.id_uczestnika IN [1,2,3,4];
+
+
+
+SELECT kreatura.nazwa
+FROM kreatura
+LEFT OUTER JOIN uczestnicy ON kreatura.nazwa = uczestnicy.id_wyprawy;
+
+
+
+
+SELECT
+  teams.team_name AS team_name,
+  projects.project_name AS project_name
+FROM TABLE teams
+INNER JOIN matches
+  ON teams.id = matches.team_id
+INNER JOIN matches
+  ON matches.project_id = projects.id
+ORDER BY teams.id;
+
